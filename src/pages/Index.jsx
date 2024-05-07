@@ -1,9 +1,29 @@
-import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid, Image, Slider, SliderTrack, SliderFilledTrack, SliderThumb } from "@chakra-ui/react";
 import { FaHome, FaUser, FaEnvelope } from "react-icons/fa";
 
 const Index = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex(prevIndex => (prevIndex + 1) % 3); // Cycle through 0, 1, 2
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <Container maxW="container.xl" p={0}>
+      <Slider defaultValue={30} min={0} max={100} step={10}>
+        <SliderTrack bg="red.100">
+          <SliderFilledTrack bg="tomato" />
+        </SliderTrack>
+        <SliderThumb boxSize={6}>
+          <Box color="tomato" as={FaAdjust} />
+        </SliderThumb>
+      </Slider>
+      <Flex justify="center" align="center" overflow="hidden" pos="relative" w="full" h="500px">
+        <Image src="images/monkey1.jpg" alt="Monkey 1" boxSize="full" objectFit="cover" display={activeIndex === 0 ? 'block' : 'none'} />
+      <Image src="images/monkey2.jpg" alt="Monkey 2" boxSize="full" objectFit="cover" display={activeIndex === 1 ? 'block' : 'none'} />
+      <Image src="images/monkey3.jpg" alt="Monkey 3" boxSize="full" objectFit="cover" display={activeIndex === 2 ? 'block' : 'none'} />
+      </Flex>
       <Flex direction="column" minH="100vh">
         <Box as="header" bg="brand.900" w="100%" p={4}>
           <Flex justify="space-between" align="center" maxW="container.md" m="0 auto">
