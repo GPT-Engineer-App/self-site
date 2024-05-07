@@ -1,16 +1,24 @@
 import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid, Image, AspectRatio } from "@chakra-ui/react";
 import { FaHome, FaUser, FaEnvelope } from "react-icons/fa";
-import { Carousel } from 'react-responsive-carousel';
+import { useState, useEffect } from 'react';
 
 const Index = () => {
+  const images = ['/images/monkey1.jpg', '/images/monkey2.jpg', '/images/monkey3.jpg'];
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((currentImage + 1) % images.length);
+    }, 3000); // Change image every 3 seconds
+    return () => clearInterval(interval);
+  }, [currentImage]);
+
   return (
     <Container maxW="container.xl" p={0}>
       <AspectRatio ratio={16 / 9} maxW="full">
-        <Carousel showThumbs={false} autoPlay infiniteLoop>
-          <Image src="/images/monkey1.jpg" alt="Monkey 1" />
-          <Image src="/images/monkey2.jpg" alt="Monkey 2" />
-          <Image src="/images/monkey3.jpg" alt="Monkey 3" />
-        </Carousel>
+        <Box position="relative" w="full" h="full">
+          <Image src={images[currentImage]} alt={`Monkey ${currentImage + 1}`} boxSize="full" objectFit="cover" />
+        </Box>
       </AspectRatio>
       <Flex direction="column" minH="100vh">
         <Box as="header" bg="brand.900" w="100%" p={4}>
