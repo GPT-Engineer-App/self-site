@@ -1,9 +1,17 @@
-import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid, Image, AspectRatio } from "@chakra-ui/react";
 import { FaHome, FaUser, FaEnvelope } from "react-icons/fa";
+import { Carousel } from 'react-responsive-carousel';
 
 const Index = () => {
   return (
     <Container maxW="container.xl" p={0}>
+      <AspectRatio ratio={16 / 9} maxW="full">
+        <Carousel showThumbs={false} autoPlay infiniteLoop>
+          <Image src="/images/monkey1.jpg" alt="Monkey 1" />
+          <Image src="/images/monkey2.jpg" alt="Monkey 2" />
+          <Image src="/images/monkey3.jpg" alt="Monkey 3" />
+        </Carousel>
+      </AspectRatio>
       <Flex direction="column" minH="100vh">
         <Box as="header" bg="brand.900" w="100%" p={4}>
           <Flex justify="space-between" align="center" maxW="container.md" m="0 auto">
