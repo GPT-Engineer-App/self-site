@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid, Image, Slider, SliderTrack, SliderFilledTrack, SliderThumb } from "@chakra-ui/react";
-import { FaHome, FaUser, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaUser, FaEnvelope, FaAdjust } from "react-icons/fa";
+import { useState, useEffect } from 'react';
 
 const Index = () => {
   const [activeIndex, setActiveIndex] = useState(0);
