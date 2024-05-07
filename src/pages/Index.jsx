@@ -1,10 +1,44 @@
-import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid } from "@chakra-ui/react";
+import { Image, Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid, useBreakpointValue, Fade } from "@chakra-ui/react";
+import React, { useState, useEffect } from 'react';
 import { FaHome, FaUser, FaEnvelope } from "react-icons/fa";
+
+const Slideshow = () => {
+  const [index, setIndex] = useState(0);
+  const images = ['/images/monkey1.jpg', '/images/monkey2.jpg', '/images/monkey3.jpg'];
+  const timeoutRef = React.useRef(null);
+
+  function resetTimeout() {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () => setIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+      ),
+      2500
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [index]);
+
+  return (
+    <Fade in={true} timeout={500}>
+      <Image src={images[index]} alt="Slideshow image" fit="cover" w="100%" h={{ base: "50vh", md: "70vh" }} />
+    </Fade>
+  );
+};
 
 const Index = () => {
   return (
     <Container maxW="container.xl" p={0}>
       <Flex direction="column" minH="100vh">
+          <Slideshow />
         <Box as="header" bg="brand.900" w="100%" p={4}>
           <Flex justify="space-between" align="center" maxW="container.md" m="0 auto">
             <Heading as="h1" size="lg" color="white">John Doe</Heading>
