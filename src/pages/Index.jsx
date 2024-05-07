@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text, VStack, Link, Container } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, VStack, Link, Container, SimpleGrid } from "@chakra-ui/react";
 import { FaHome, FaUser, FaEnvelope } from "react-icons/fa";
 
 const Index = () => {
@@ -20,6 +20,28 @@ const Index = () => {
             <Heading as="h2" size="xl" id="home">Welcome</Heading>
             <Text fontSize="lg">I'm a professional web developer and designer based in New York. I specialize in creating high-quality, responsive websites and applications.</Text>
           </VStack>
+          <SimpleGrid columns={3} spacing={10} py={10}>
+            <Box bg="white" shadow="md" rounded="lg" p={5}>
+              <Heading size="md">Project 1</Heading>
+              <Text mt={2}>Description of Project 1.</Text>
+            </Box>
+            <Box bg="white" shadow="md" rounded="lg" p={5}>
+              <Heading size="md">Project 2</Heading>
+              <Text mt={2}>Description of Project 2.</Text>
+            </Box>
+            <Box bg="white" shadow="md" rounded="lg" p={5}>
+              <Heading size="md">Project 3</Heading>
+              <Text mt={2}>Description of Project 3.</Text>
+            </Box>
+            <Box bg="white" shadow="md" rounded="lg" p={5}>
+              <Heading size="md">Project 4</Heading>
+              <Text mt={2}>Description of Project 4.</Text>
+            </Box>
+            <Box bg="white" shadow="md" rounded="lg" p={5}>
+              <Heading size="md">Project 5</Heading>
+              <Text mt={2}>Description of Project 5.</Text>
+            </Box>
+          </SimpleGrid>
         </Flex>
         <Box as="footer" bg="brand.800" color="white" p={4}>
           <Flex justify="center" align="center">
